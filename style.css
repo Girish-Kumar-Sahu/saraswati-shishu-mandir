@@ -1919,3 +1919,402 @@ footer {
         transform: none;
     }
 }
+
+
+/* =========================================
+   CAMPUS & LEARNING
+========================================= */
+
+.campus-section {
+    padding: 120px 0;
+
+    background: var(--cream);
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   CAMPUS HEADING
+========================================= */
+
+.campus-heading {
+    max-width: 760px;
+
+    margin-bottom: 80px;
+}
+
+.campus-heading h2 {
+    margin-bottom: 25px;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(
+        3rem,
+        6vw,
+        5rem
+    );
+
+    line-height: 1.02;
+
+    color: var(--navy);
+
+    letter-spacing: -0.03em;
+}
+
+.campus-heading p {
+    max-width: 600px;
+
+    color: var(--muted);
+
+    font-size: 1.05rem;
+}
+
+
+/* =========================================
+   SUBSECTION HEADING
+========================================= */
+
+.subsection-heading {
+    margin-bottom: 35px;
+}
+
+.subsection-heading > span {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: var(--saffron);
+
+    font-size: 0.7rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.15em;
+
+    text-transform: uppercase;
+}
+
+.subsection-heading h3 {
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(
+        1.8rem,
+        4vw,
+        2.7rem
+    );
+
+    line-height: 1.1;
+
+    color: var(--navy);
+}
+
+
+/* =========================================
+   SMART CLASSROOM VIDEOS
+========================================= */
+
+.video-section {
+    margin-bottom: 120px;
+}
+
+.video-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 24px;
+}
+
+
+/*
+    The card does NOT force a fixed aspect ratio.
+
+    This means portrait and landscape videos
+    can both display correctly without cropping.
+*/
+
+.video-card {
+    overflow: hidden;
+
+    border-radius: var(--radius);
+
+    background: #111;
+
+    border: 1px solid var(--border);
+
+    box-shadow:
+        0 15px 40px
+        rgba(13, 27, 38, 0.10);
+}
+
+.video-wrapper {
+    width: 100%;
+
+    background: #111;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+/*
+    IMPORTANT:
+
+    Do NOT use object-fit: cover here.
+
+    The browser will preserve the complete
+    video frame.
+*/
+
+.video-wrapper video {
+    display: block;
+
+    width: 100%;
+
+    height: auto;
+
+    max-height: 650px;
+
+    object-fit: contain;
+
+    background: #111;
+}
+
+
+/* =========================================
+   VIDEO CONTROLS
+========================================= */
+
+.video-wrapper video:focus {
+    outline: 2px solid var(--saffron);
+
+    outline-offset: -2px;
+}
+
+
+/* =========================================
+   PHOTO GALLERY
+========================================= */
+
+.photo-gallery-section {
+    margin-top: 20px;
+}
+
+.photo-gallery {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 18px;
+
+    align-items: start;
+}
+
+
+/*
+    Each image keeps its ORIGINAL
+    aspect ratio.
+
+    No fixed height.
+    No object-fit: cover.
+    No cropping.
+*/
+
+.photo-item {
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 15px;
+
+    background: #111;
+
+    border: 1px solid var(--border);
+
+    box-shadow:
+        0 10px 30px
+        rgba(13, 27, 38, 0.07);
+}
+
+
+.photo-item img {
+    display: block;
+
+    width: 100%;
+
+    height: auto;
+
+    max-width: 100%;
+
+    object-fit: contain;
+
+    object-position: center;
+
+    transition:
+        transform 0.35s ease;
+}
+
+
+/*
+    Very subtle hover effect.
+
+    It does NOT crop the image because
+    the image remains inside its container.
+*/
+
+.photo-item:hover img {
+    transform: scale(1.015);
+}
+
+
+/* =========================================
+   PHOTO HOVER OVERLAY
+========================================= */
+
+.photo-item::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent 70%,
+            rgba(0, 0, 0, 0.15)
+        );
+
+    opacity: 0;
+
+    transition: opacity 0.3s ease;
+}
+
+.photo-item:hover::after {
+    opacity: 1;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 950px) {
+
+    .campus-section {
+        padding: 90px 0;
+    }
+
+
+    .video-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .video-wrapper video {
+        max-height: 600px;
+    }
+
+
+    .photo-gallery {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .campus-section {
+        padding: 75px 0;
+    }
+
+
+    .campus-heading {
+        margin-bottom: 55px;
+    }
+
+
+    .campus-heading h2 {
+        font-size: 3rem;
+    }
+
+
+    .video-section {
+        margin-bottom: 80px;
+    }
+
+
+    .video-grid {
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+    }
+
+
+    .video-card {
+        border-radius: 13px;
+    }
+
+
+    .video-wrapper video {
+        width: 100%;
+
+        height: auto;
+
+        max-height: none;
+
+        object-fit: contain;
+    }
+
+
+    .photo-gallery {
+        grid-template-columns: 1fr;
+
+        gap: 16px;
+    }
+
+
+    .photo-item {
+        border-radius: 12px;
+    }
+
+
+    .photo-item img {
+        width: 100%;
+
+        height: auto;
+
+        object-fit: contain;
+    }
+
+}
+
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .photo-item img {
+        transition: none;
+    }
+
+    .photo-item:hover img {
+        transform: none;
+    }
+}
